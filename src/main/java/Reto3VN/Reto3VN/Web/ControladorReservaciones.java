@@ -2,9 +2,12 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
+package Reto3VN.Reto3VN.Web;
 
-package Reto3VN.Reto3VN;
-
+import Reto3VN.Reto3VN.Modelo.Mascara.CountCliente;
+import Reto3VN.Reto3VN.Modelo.Mascara.StatusReservacion;
+import Reto3VN.Reto3VN.Servicios.ServiciosReservaciones;
+import Reto3VN.Reto3VN.Modelo.Reservaciones;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,39 +26,51 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author USUARIO
+ * @author Viviana Naranjo
  */
 @RestController
-@RequestMapping("/api/Room")
+@RequestMapping("/api/Reservation")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class ControladorRoom {
-     @Autowired
-    private ServiciosRoom servicio;
+public class ControladorReservaciones {
+      @Autowired
+    private ServiciosReservaciones servicio;
     @GetMapping("/all")
-    public List<Room> getRoom(){
+    public List<Reservaciones> getReservations(){
         return servicio.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Room> getRoom(@PathVariable("id") int roomId) {
-        return servicio.getRoom(roomId);
+    public Optional<Reservaciones> getReservation(@PathVariable("id") int reservationId) {
+        return servicio.getReservation(reservationId);
     }
-
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Room save(@RequestBody Room room) {
-        return servicio.save(room);
+    public Reservaciones save(@RequestBody Reservaciones reservation) {
+        return servicio.save(reservation);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Room update(@RequestBody Room room) {
-        return servicio.update(room);
+    public Reservaciones update(@RequestBody Reservaciones reservation) {
+        return servicio.update(reservation);
     }
-
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int roomId) {
-        return servicio.deleteRoom(roomId);
-    } 
+    public boolean delete(@PathVariable("id") int reservationId) {
+        return servicio.deleteReservation(reservationId);
+    }
+    //5
+    @GetMapping("/report-status")
+    public StatusReservacion getReservacionesStatus(){
+        return servicio.getStatusReport();
+    }
+    @GetMapping("/report-clients")
+    public List<CountCliente> getCountCliente(){
+        return servicio.getTopClientes();
+    }
+
+    @GetMapping("/report-dates/{dateOne}/{dateTwo}")
+    public List<Reservaciones> getDatesReport(@PathVariable("dateOne")String d1, @PathVariable("dateTwo")String d2){
+       return servicio.getReservacionesPeriod(d1,d2);
+    }
 }

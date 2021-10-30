@@ -2,8 +2,11 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto3VN.Reto3VN;
 
+package Reto3VN.Reto3VN.Web;
+
+import Reto3VN.Reto3VN.Servicios.ServiciosRoom;
+import Reto3VN.Reto3VN.Modelo.Room;
 import java.util.List;
 import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,40 +25,39 @@ import org.springframework.web.bind.annotation.RestController;
 
 /**
  *
- * @author USUARIO
+ * @author Viviana Naranjo
  */
 @RestController
-@RequestMapping("/api/Client")
+@RequestMapping("/api/Room")
 @CrossOrigin(origins = "*", methods= {RequestMethod.GET,RequestMethod.POST,RequestMethod.PUT,RequestMethod.DELETE})
 
-public class ControladorCliente {
+public class ControladorRoom {
      @Autowired
-    private ServiciosCliente servicio;
-  
+    private ServiciosRoom servicio;
     @GetMapping("/all")
-    public List<Cliente> getClients(){
+    public List<Room> getRoom(){
         return servicio.getAll();
     }
 
     @GetMapping("/{id}")
-    public Optional<Cliente> getClient(@PathVariable("id") int clientId) {
-        return servicio.getClient(clientId);
+    public Optional<Room> getRoom(@PathVariable("id") int roomId) {
+        return servicio.getRoom(roomId);
     }
 
     @PostMapping("/save")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente save(@RequestBody Cliente client) {
-        return servicio.save(client);
+    public Room save(@RequestBody Room room) {
+        return servicio.save(room);
     }
     @PutMapping("/update")
     @ResponseStatus(HttpStatus.CREATED)
-    public Cliente update(@RequestBody Cliente client) {
-        return servicio.update(client);
+    public Room update(@RequestBody Room room) {
+        return servicio.update(room);
     }
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public boolean delete(@PathVariable("id") int clientId) {
-        return servicio.deleteClient(clientId);
-    }
+    public boolean delete(@PathVariable("id") int roomId) {
+        return servicio.deleteRoom(roomId);
+    } 
 }

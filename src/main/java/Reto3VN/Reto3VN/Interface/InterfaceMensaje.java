@@ -2,14 +2,15 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Interface.java to edit this template
  */
-package Reto3VN.Reto3VN;
+package Reto3VN.Reto3VN.Interface;
 
+import Reto3VN.Reto3VN.Modelo.Mensaje;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
- * @author USUARIO
+ * @author Viviana Naranjo
  */
-public interface InterfaceCliente extends CrudRepository<Cliente,Integer> {
+public interface InterfaceMensaje extends CrudRepository<Mensaje,Integer>{
     
 }

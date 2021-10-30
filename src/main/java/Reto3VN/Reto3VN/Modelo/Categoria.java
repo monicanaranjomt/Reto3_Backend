@@ -1,5 +1,5 @@
 
-package Reto3VN.Reto3VN;
+package Reto3VN.Reto3VN.Modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
@@ -11,7 +11,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
-
+/**
+ *
+ * @author Viviana Naranjo
+ */
 @Entity
 @Table(name = "category")
 public class Categoria implements Serializable {

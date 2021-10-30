@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Reto3VN.Reto3VN;
+package Reto3VN.Reto3VN.Modelo;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import java.io.Serializable;
@@ -17,7 +17,7 @@ import javax.persistence.Table;
 
 /**
  *
- * @author USUARIO
+ * @author Viviana Naranjo
  */
 @Entity
 @Table(name = "reservation")
